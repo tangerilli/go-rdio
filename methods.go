@@ -302,8 +302,11 @@ func (c *Client) GetArtistsInCollection() ([]CollectionArtist, error) {
 	return c.getCollectionArtistsResponse(body)
 }
 
-func (c *Client) GetOfflineTracks() ([]Track, error) {
-	params := url.Values{}
+func (c *Client) GetOfflineTracks(start int, count int) ([]Track, error) {
+	params := url.Values{
+		"start": []string{strconv.Itoa(start)},
+		"count": []string{strconv.Itoa(count)},
+	}
 	body, err := c.Call("getOfflineTracks", params)
 	if err != nil {
 		return nil, err

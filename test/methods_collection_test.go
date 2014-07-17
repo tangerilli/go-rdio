@@ -47,7 +47,7 @@ func TestGetArtistsInCollection(t *testing.T) {
 func TestGetOfflineTracks(t *testing.T) {
 	c := createClient(t)
 
-	_, err := c.GetOfflineTracks()
+	_, err := c.GetOfflineTracks(0, 10)
 	if err != nil {
 		t.Fatal(err)
 	}
